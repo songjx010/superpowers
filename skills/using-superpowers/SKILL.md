@@ -104,6 +104,20 @@ When multiple skills could apply, use this order:
 "Let's build X" → brainstorming first, then implementation skills.
 "Fix this bug" → debugging first, then domain-specific skills.
 
+## Brainstorming Variant Selection
+
+When the brainstorming skill is about to be invoked, ask the user which variant to use before loading any brainstorming skill:
+
+> "I can help brainstorm this idea. Which mode would you prefer?
+> - **Standard** — structured collaborative dialogue with visual companion support
+> - **Plus** — enhanced brainstorming with advanced analysis capabilities"
+
+Invoke the user's chosen variant using the Skill tool:
+- Standard → `superpowers:brainstorming`
+- Plus → `superpowers:brainstorming-plus`
+
+If the user does not express a preference, use Standard.
+
 ## Skill Types
 
 **Rigid** (TDD, debugging): Follow exactly. Don't adapt away discipline.
