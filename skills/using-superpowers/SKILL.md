@@ -50,7 +50,8 @@ digraph skill_flow {
     "User message received" [shape=doublecircle];
     "About to EnterPlanMode?" [shape=doublecircle];
     "Already brainstormed?" [shape=diamond];
-    "Invoke brainstorming skill" [shape=box];
+    "Ask variant (Standard/Plus)" [shape=diamond];
+    "Invoke chosen brainstorming variant" [shape=box];
     "Might any skill apply?" [shape=diamond];
     "Invoke Skill tool" [shape=box];
     "Announce: 'Using [skill] to [purpose]'" [shape=box];
@@ -60,9 +61,10 @@ digraph skill_flow {
     "Respond (including clarifications)" [shape=doublecircle];
 
     "About to EnterPlanMode?" -> "Already brainstormed?";
-    "Already brainstormed?" -> "Invoke brainstorming skill" [label="no"];
+    "Already brainstormed?" -> "Ask variant (Standard/Plus)" [label="no"];
     "Already brainstormed?" -> "Might any skill apply?" [label="yes"];
-    "Invoke brainstorming skill" -> "Might any skill apply?";
+    "Ask variant (Standard/Plus)" -> "Invoke chosen brainstorming variant";
+    "Invoke chosen brainstorming variant" -> "Might any skill apply?";
 
     "User message received" -> "Might any skill apply?";
     "Might any skill apply?" -> "Invoke Skill tool" [label="yes, even 1%"];
@@ -106,7 +108,11 @@ When multiple skills could apply, use this order:
 
 ## Brainstorming Variant Selection
 
-When the brainstorming skill is about to be invoked, ask the user which variant to use before loading any brainstorming skill:
+<EXTREMELY-IMPORTANT>
+**BEFORE invoking any brainstorming skill**, you MUST ask the user which variant they prefer. This is a mandatory gate — do NOT call the Skill tool for brainstorming until the user has made their choice.
+</EXTREMELY-IMPORTANT>
+
+Ask the user:
 
 > "I can help brainstorm this idea. Which mode would you prefer?
 > - **Standard** — structured collaborative dialogue with visual companion support
