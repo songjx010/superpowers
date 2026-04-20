@@ -110,7 +110,7 @@ When the brainstorming skill is about to be invoked, ask the user which variant 
 
 > "I can help brainstorm this idea. Which mode would you prefer?
 > - **Standard** — structured collaborative dialogue with visual companion support
-> - **Plus** — enhanced brainstorming with advanced analysis capabilities"
+> - **Plus** — full long-task pipeline (requirements → UCD → design) for complex projects"
 
 Invoke the user's chosen variant using the Skill tool:
 - Standard → `superpowers:brainstorming`
